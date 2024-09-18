@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <img src="./logo/cloud-server.png" alt="App Logo" />
-        <span>LearnCloud</span>
+        <span>EduCloud</span>
       </div>
       <ul className="navbar-links">
         <li><a href="#landing">Home</a></li>
