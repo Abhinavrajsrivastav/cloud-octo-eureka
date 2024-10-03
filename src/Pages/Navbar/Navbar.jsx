@@ -6,8 +6,8 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        {/* <img src="./logo/cloud-server.png" alt="App Logo" /> */}
-        <span>EduCloud</span>
+        <img src="./logo/hexagon.png" alt="App Logo" />
+        <span>columbae</span>
       </div>
       <ul className="navbar-links">
         <li><a href="#landing">Home</a></li>
