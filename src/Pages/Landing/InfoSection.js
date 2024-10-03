@@ -25,10 +25,10 @@ const InfoSection = ({
                     <div className="info-column">
                         <div className="text-wrapper">
                             <div className={`top-line ${lightTopLine ? 'light-top-line' : ''}`}>
-                                {topLine ? topLine : 'Welcome to the Interview Dashboard'}
+                                {topLine ? topLine : 'Welcome to the Columbae'}
                             </div>
                             <h1 className={`heading ${lightText ? 'light-text' : ''}`}>
-                                {headline ? headline : 'Streamline Your Interview Process'}
+                                {headline ? headline : 'Making Interviews Like a Breeze'}
                             </h1>
                             <p className={`subtitle ${lightTextDesc ? 'light-text-desc' : ''}`}>
                                 {description ? description : 'Our platform offers features that make interview scheduling, preparation, and tracking seamless for both interviewers and candidates.'}
