@@ -3,7 +3,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #1e3d59;
+  background-color:  #4B59F7;
+  filter:  opacity(0.9);
   gap: 720px;
   padding: 20px;
   position: fixed;
