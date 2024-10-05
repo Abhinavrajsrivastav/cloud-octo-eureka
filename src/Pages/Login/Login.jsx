@@ -4,12 +4,14 @@ import './Login.css';
 import { auth } from '../../API/Firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
+import { useUser } from '../../UserContext'; // Import useUser from UserContext
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showModal, setShowModal] = useState(false); // State for modal visibility
+    const { setUser } = useUser(); // Use setUser to update user context
 
     const toggleCard = () => {
         setIsLogin(!isLogin);
@@ -19,16 +21,30 @@ const Login = () => {
         if (isLogin) {
             // Sign in
             try {
-                await signInWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
                 console.log('Login successful');
+
+                // Update user context with email and fallback userName (email prefix)
+                setUser({
+                    userName: user.displayName || email.split('@')[0],  // Fallback to email prefix if displayName is not available
+                    email: user.email,
+                });
             } catch (error) {
                 console.error('Login error:', error.message);
             }
         } else {
             // Sign up
             try {
-                await createUserWithEmailAndPassword(auth, email, password);
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
                 console.log('Sign up successful');
+
+                // Update user context with email and fallback userName (email prefix)
+                setUser({
+                    userName: user.displayName || email.split('@')[0],
+                    email: user.email,
+                });
             } catch (error) {
                 console.error('Sign up error:', error.message);
             }
@@ -41,6 +57,12 @@ const Login = () => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
             console.log('Google login successful. Email:', user.email);
+
+            // Update user context with Google account information
+            setUser({
+                userName: user.displayName || user.email.split('@')[0],
+                email: user.email,
+            });
         } catch (error) {
             console.error('Google login error:', error.message);
         }

@@ -1,0 +1,28 @@
+/* src/pages/Profile/Profile.css */
+.profile-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+p {
+  color: gray;
+}

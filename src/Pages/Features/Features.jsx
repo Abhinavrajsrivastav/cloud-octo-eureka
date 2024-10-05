@@ -1,39 +1,43 @@
-// src/components/Features/Features.jsx
+// src/pages/Profile/Features.jsx
 import React from 'react';
+import { FcVideoCall, FcPlanner, FcComments, FcAbout } from 'react-icons/fc';
 import './Features.css';
 
 const Features = () => {
-  const featureList = [
-    {
-      title: 'Upload Files',
-      description: 'Easily upload and store your code files, images, text documents, and more.',
-      image: "https://miro.medium.com/v2/resize:fit:1024/1*lf0VvflbPF3zqV0al7bv5w.png",
-    },
-    {
-      title: 'Manage Content',
-      description: 'Organize, update, and delete your learning materials with a user-friendly interface.',
-      image: "https://projectsly.com/images/blog/cloud-based-project-management-software.png?v=1670514978795773617",
-    },
-    {
-      title: 'Access Anywhere',
-      description: 'Access your materials from any device, anywhere, at any time.',
-      image: "https://www.eclinicalworks.com/wp-content/uploads/2022/10/2022-move-to-cloud-graphic@2x.png.webp",
-    },
-  ];
-
   return (
-    <section id="features" className="features">
-      <h2>Features</h2>
-      <div className="features-container">
-        {featureList.map((feature, index) => (
-          <div className="feature-card" key={index}>
-            <img src={feature.image} alt={feature.title} />
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
+    <div className="features-container">
+      <h3 className="features-title">Amazing Features</h3>
+      <ul className="features-list">
+        <li className="feature-item">
+          <FcVideoCall className="feature-icon" />
+          <div className="feature-info">
+            <h4>Start a Video Call</h4>
+            <p>Connect with your friends and colleagues through high-quality video calls.</p>
           </div>
-        ))}
-      </div>
-    </section>
+        </li>
+        <li className="feature-item">
+          <FcPlanner className="feature-icon" />
+          <div className="feature-info">
+            <h4>Schedule a Video Call</h4>
+            <p>Plan your meetings in advance and never miss an important discussion.</p>
+          </div>
+        </li>
+        <li className="feature-item">
+          <FcComments className="feature-icon" />
+          <div className="feature-info">
+            <h4>Do Messages & Chatting</h4>
+            <p>Instantly chat with your contacts and share messages seamlessly.</p>
+          </div>
+        </li>
+        <li className="feature-item">
+          <FcAbout className="feature-icon" />
+          <div className="feature-info">
+            <h4>View Chat History</h4>
+            <p>Keep track of all your conversations and never lose important information.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 };
 

@@ -1,23 +1,24 @@
+// src/App.jsx
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // No Router here
-import Landing from './Pages/Landing/InfoSection';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Pages/Navbar/Navbar';
-import Features from './Pages/Features/Features';
-import Footer from './Pages/Footer/Footer';
+import { UserProvider } from './UserContext'; // Import the provider
+import Profile from './Pages/Profile/Profile'; // Assuming you created Profile page
+import Features from './Pages/Features/Features'; // Assuming you created Features page
+import Landing from './Pages/Landing/InfoSection';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={
-        <>
+    <UserProvider>
+      <Router>
         <Navbar />
-        <Landing />
+        <Routes>
+          <Route path="/" element={<Landing />} /> 
+          <Route path="/profile" element={<Profile />} /> 
+        </Routes>
         <Features />
-        <Footer />
-        </>
-        }
-         />
-    </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 
