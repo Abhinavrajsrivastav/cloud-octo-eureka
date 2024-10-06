@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PasswordResetModal from './PasswordResetModal'; // Import your modal component
 import './Login.css';
 import { auth } from '../../API/Firebase';
@@ -11,7 +11,18 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showModal, setShowModal] = useState(false); // State for modal visibility
-    const { setUser } = useUser(); // Use setUser to update user context
+    const { user, setUser } = useUser(); // Use setUser to update user context
+
+    // Check local storage for user details when the component mounts
+    useEffect(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            const parsedUser = JSON.parse(userData);
+            setUser(parsedUser); // Update user context
+            // Optionally, set local state if needed
+            setEmail(parsedUser.email); // Set email for display
+        }
+    }, [setUser]);
 
     const toggleCard = () => {
         setIsLogin(!isLogin);
@@ -25,11 +36,13 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log('Login successful');
 
-                // Update user context with email and fallback userName (email prefix)
-                setUser({
-                    userName: user.displayName || email.split('@')[0],  // Fallback to email prefix if displayName is not available
+                // Update user context and local storage with user details
+                const userData = {
+                    userName: user.displayName || email.split('@')[0], // Fallback to email prefix if displayName is not available
                     email: user.email,
-                });
+                };
+                setUser(userData);
+                localStorage.setItem('user', JSON.stringify(userData)); // Save user data to local storage
             } catch (error) {
                 console.error('Login error:', error.message);
             }
@@ -40,11 +53,13 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log('Sign up successful');
 
-                // Update user context with email and fallback userName (email prefix)
-                setUser({
+                // Update user context and local storage with user details
+                const userData = {
                     userName: user.displayName || email.split('@')[0],
                     email: user.email,
-                });
+                };
+                setUser(userData);
+                localStorage.setItem('user', JSON.stringify(userData)); // Save user data to local storage
             } catch (error) {
                 console.error('Sign up error:', error.message);
             }
@@ -58,11 +73,13 @@ const Login = () => {
             const user = result.user;
             console.log('Google login successful. Email:', user.email);
 
-            // Update user context with Google account information
-            setUser({
+            // Update user context and local storage with Google account information
+            const userData = {
                 userName: user.displayName || user.email.split('@')[0],
                 email: user.email,
-            });
+            };
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData)); // Save user data to local storage
         } catch (error) {
             console.error('Google login error:', error.message);
         }
