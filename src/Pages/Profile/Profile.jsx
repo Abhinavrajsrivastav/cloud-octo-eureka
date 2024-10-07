@@ -40,17 +40,17 @@ const Profile = () => {
           <p><strong>@_abhinav_srivastav__</strong></p>
           <section className='User-Profile-btn'>
             <button className="follow-button">Follow</button>
-            <button className="follow-button">Message</button>
-            <button className="follow-button"><FcMenu size='20' style={{color:'white'}}/></button>
+            <button className="message-btn">Message</button>
+            <button className="menu-btn"><FcMenu size='20' style={{color:'white'}}/></button>
           </section>
         </div>
          <div className="user-stats">
-          <p><strong>{user.posts || 0}</strong> posts</p>
-          <p><strong>{user.followers || 0}</strong> followers</p>
-          <p><strong>{user.following || 0}</strong> following</p>
+          <p className=''><strong>{user.posts || 0}</strong> posts</p>
+          <p className=''><strong>{user.followers || 0}</strong> followers</p>
+          <p className=''><strong>{user.following || 0}</strong> following</p>
         </div>
           <p>{user.bio || 'No bio available'}</p>
-          <p><a href={user.youtubeLink || '#'}>{user.youtubeLink || 'No YouTube link'}</a></p>
+          <p><a href={user.youtubeLink || '#'}>{"@AbhinavSrivastav" || 'No YouTube link'}</a></p>
         </div>
        </div>
       </div>

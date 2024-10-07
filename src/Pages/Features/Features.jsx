@@ -1,41 +1,46 @@
-// src/pages/Profile/Features.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FcVideoCall, FcPlanner, FcComments, FcAbout } from 'react-icons/fc';
 import './Features.css';
 
 const Features = () => {
+  const [activeFeature, setActiveFeature] = useState(null);
+
+  const features = [
+    {
+      icon: <FcVideoCall className="feature-icon" />,
+      description: 'Video Call'
+    },
+    {
+      icon: <FcPlanner className="feature-icon" />,
+      description: 'Schedule a Video Call'
+    },
+    {
+      icon: <FcComments className="feature-icon" />,
+      description: 'Do Messages & Chatting'
+    },
+    {
+      icon: <FcAbout className="feature-icon" />,
+      description: 'View Chat History'
+    }
+  ];
+
   return (
     <div className="features-container">
-      {/* <h3 className="features-title">Amazing Features</h3> */}
       <ul className="features-list">
-        <li className="feature-item">
-          <FcVideoCall className="feature-icon" />
-          <div className="feature-info">
-            {/* <h4>Start a Video Call</h4>
-            <p>Connect with your friends and colleagues through high-quality video calls.</p> */}
-          </div>
-        </li>
-        <li className="feature-item">
-          <FcPlanner className="feature-icon" />
-          <div className="feature-info">
-            {/* <h4>Schedule a Video Call</h4>
-            <p>Plan your meetings in advance and never miss an important discussion.</p> */}
-          </div>
-        </li>
-        <li className="feature-item">
-          <FcComments className="feature-icon" />
-          <div className="feature-info">
-            {/* <h4>Do Messages & Chatting</h4>
-            <p>Instantly chat with your contacts and share messages seamlessly.</p> */}
-          </div>
-        </li>
-        <li className="feature-item">
-          <FcAbout className="feature-icon" />
-          <div className="feature-info">
-            {/* <h4>View Chat History</h4>
-            <p>Keep track of all your conversations and never lose important information.</p> */}
-          </div>
-        </li>
+        {features.map((feature, index) => (
+          <li
+            key={index}
+            className={`feature-item ${activeFeature === index ? 'active' : ''}`}
+            onClick={() => setActiveFeature(index)}
+          >
+            {feature.icon}
+            <div className="feature-info">
+              <div className="feature-description">
+                {feature.description}
+              </div>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );

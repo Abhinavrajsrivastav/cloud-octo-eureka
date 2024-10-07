@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Landing />} /> 
           <Route path="/profile" element={<Profile />} /> 
         </Routes>
-        <Features />
+        {/* <Features /> */}
       </Router>
     </UserProvider>
   );

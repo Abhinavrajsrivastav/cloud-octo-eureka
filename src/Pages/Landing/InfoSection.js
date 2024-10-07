@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../Login/Login'; // Adjust the path based on your folder structure
 import './InfoSection.css'; // Import the CSS file
+import { useUser } from '../../UserContext'; // Import the useUser hook
 
 const InfoSection = ({ 
     primary,
@@ -18,6 +19,9 @@ const InfoSection = ({
     imgStart,
     start
 }) => {
+
+    const { user, setUser } = useUser(); // Use the useUser hook to access user context
+
     return (
         <div className={`info-sec ${lightBg ? 'light-bg' : 'dark-bg'}`}>
             <div className="container">
@@ -44,7 +48,8 @@ const InfoSection = ({
                     {/* Add the Login component to the right side */}
                     <div className="info-column">
                         <div className="img-wrapper">
-                            <Login /> {/* Render your Login component here */}
+                            {!user&&<Login />} {/* Render your Login component here */}
+                            {user&&<img src='./Logo/Monkey.jpg' alt={alt} className="img" />}
                         </div>
                     </div>
                 </div>

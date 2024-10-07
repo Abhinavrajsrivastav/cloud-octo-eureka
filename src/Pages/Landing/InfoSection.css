@@ -4,7 +4,9 @@
 
 .info-sec {
     color: #fff;
-    padding: 10px 0;
+    padding: 0px 0;
+    background: url('./wave-haikei\ \(2\).svg') no-repeat center center/cover;   
+    height: 100vh;
 }
 
 .light-bg {
@@ -12,14 +14,13 @@
 }
 
 .dark-bg {
-    background: #101522;
 }
 
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 15px;
+    padding: 10px 15px;
     font-family: "Fredoka", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
@@ -110,6 +111,34 @@
 .primary {
     background: #4B59F7; /* Use a different color if needed */
 }
+
+.img-wrapper {
+    max-width: 555px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    -webkit-mask-image: url('./Monkey.jpg'); /* Add your image here */
+    mask-image: url('./Monkey.jpg');
+    mask-size: cover;
+    background-color: transparent; /* Set background color to transparent */
+    margin-top: 100px;
+}
+
+
+.img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Intensify the shadow */
+}
+
 
 /* Add responsive styles if needed */
 @media (max-width: 768px) {
