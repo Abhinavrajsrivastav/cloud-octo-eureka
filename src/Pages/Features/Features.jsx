@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { FcVideoCall, FcPlanner, FcComments, FcAbout } from 'react-icons/fc';
+import { 
+  FcVideoCall, FcPlanner, FcComments, FcAbout, FcCollaboration, FcContacts, FcSettings, FcFile, FcTodoList, FcPhoneAndroid, 
+  FcUpload
+} from 'react-icons/fc';
 import './Features.css';
 
 const Features = () => {
@@ -8,20 +11,40 @@ const Features = () => {
   const features = [
     {
       icon: <FcVideoCall className="feature-icon" />,
-      description: 'Video Call'
+      description: 'Start a meeting'
+    },
+    {
+      icon: <FcCollaboration  className='feature-icon' />,
+      description: 'Join a meeting'
     },
     {
       icon: <FcPlanner className="feature-icon" />,
-      description: 'Schedule a Video Call'
+      description: 'Schedule an Interview'
     },
     {
-      icon: <FcComments className="feature-icon" />,
-      description: 'Do Messages & Chatting'
+      icon: <FcContacts className="feature-icon" />,
+      description: 'Add Contacts'
     },
     {
       icon: <FcAbout className="feature-icon" />,
       description: 'View Chat History'
-    }
+    },
+    {
+      icon: <FcSettings className="feature-icon" />,
+      description: 'Settings'
+    },
+    {
+      icon: <FcUpload className="feature-icon" />,
+      description: 'Upload Documents'
+    },
+    {
+      icon: <FcTodoList className="feature-icon" />,
+      description: 'View Interview Agenda'
+    },
+    {
+      icon: <FcPhoneAndroid className="feature-icon" />,
+      description: 'Start a Mobile Call'
+    },
   ];
 
   return (
